@@ -12,15 +12,16 @@ const OtpScreen = () => {
     const toast = useToast()
     const [otpValue, setotpValue] = useState('');
     const handleSubmit = async () => {
+        console.log(import.meta.env.VITE_APP_API_URL);
         // from env
-        await axios.post(`${process.env.REACT_APP_API_KEY || 'http://localhost:3000'}/api/verification-code`, { code: otpValue })
+        await axios.post(`${import.meta.env.VITE_APP_API_URL || 'http://localhost:3000'}/api/verification-code`, { code: otpValue })
             .then(() => {
                 navigate('/success');
             })
             .catch(err => {
                 toast({
                     title: 'Error',
-                    description: err.response.data.message,
+                    description: err.response?.data?.message || 'Something went wrong',
                     status: 'error',
                     duration: 9000,
                     isClosable: true,
