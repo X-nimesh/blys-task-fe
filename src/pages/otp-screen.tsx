@@ -4,7 +4,6 @@ import otpImage from '../assets/otpLogo.png'
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import React from 'react';
 const OtpScreen = () => {
     console.log(import.meta.env.VITE_APP_API_URL);
     const navigate = useNavigate();
